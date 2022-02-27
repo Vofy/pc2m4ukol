@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1645923860 source:/home/vofy/Downloads/04_Bitove_Operace/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+
