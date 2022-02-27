@@ -12,31 +12,6 @@ unsigned short int toDecimal(unsigned short int *array) {
     return decimal;
 }
 
-void logicalAnd(unsigned short int *arrayA, unsigned short int *arrayB, unsigned short int *result) {
-    for(int i = 0; i < 16; i++)
-        result[i] = arrayA[i] && arrayB[i] ? 1 : 0;
-}
-
-void logicalOr(unsigned short int *arrayA, unsigned short int *arrayB, unsigned short int *result) {
-    for(int i = 0; i < 16; i++)
-        result[i] = arrayA[i] || arrayB[i] ? 1 : 0;
-}
-
-void logicalXor(unsigned short int *arrayA, unsigned short int *arrayB, unsigned short int *result) {
-    for(int i = 0; i < 16; i++)
-        result[i] = arrayA[i] != arrayB[i] ? 1 : 0;
-}
-
-void logicalNot(unsigned short int *array, unsigned short int *result) {
-    for(int i = 0; i < 16; i++)
-        result[i] = array[i] == 0 ? 1 : 0;
-}
-
-void bitShift(unsigned short int *array, int shift, unsigned short int *result) {
-    for(int i = 0; i < 16; i++)
-        result[i] =  i >= shift ? array[i - shift] : 0;
-}
-
 void fillArray(unsigned short int *array) {
     for(int i = 0; i < 16; i++)
         array[i] = rand() % 2;
@@ -64,6 +39,7 @@ int main(void) {
 	printArray(&a_bin);
     printf("     a_dec: %5d\n", a_dec);
 
+
 	// Naplneni pole b_bin nahodnymi cisly
 	printf("b_bin:     ");
 	fillArray(&b_bin);
@@ -71,38 +47,63 @@ int main(void) {
 	printArray(&b_bin);
     printf("     b_dec: %5d\n\n", b_dec);
 
+
     // Provedeni logickeho soucinu
     printf("Bit-wise conjunction (AND):\n\nc_dec:     ");
-    logicalAnd(&a_bin, &b_bin, &c_bin);
+
+    for(n = 0; n < 16; n++)
+        c_bin[n] = a_bin[n] && b_bin[n] ? 1 : 0;
+
     d_dec = a_dec & b_dec;
+
     printArray(c_bin);
     printf("     c_dec: %5d     d_dec: %5d\n\n", toDecimal(c_bin), d_dec);
+
 
     // Provedeni logickeho souctu
     printf("Bit-wise disjunction (OR):\n\nc_dec:     ");
-    logicalOr(&a_bin, &b_bin, &c_bin);
+
+    for(n = 0; n < 16; n++)
+        c_bin[n] = a_bin[n] || b_bin[n] ? 1 : 0;
+
     d_dec = a_dec | b_dec;
+
     printArray(c_bin);
     printf("     c_dec: %5d     d_dec: %5d\n\n", toDecimal(c_bin), d_dec);
+
 
     // Provedeni logickeho rozdilu
     printf("Bit-wise inequality (XOR):\n\nc_dec:     ");
-    logicalXor(&a_bin, &b_bin, &c_bin);
+
+    for(n = 0; n < 16; n++)
+        c_bin[n] = a_bin[n] != b_bin[n] ? 1 : 0;
+
     d_dec = a_dec ^ b_dec;
+
     printArray(c_bin);
     printf("     c_dec: %5d     d_dec: %5d\n\n", toDecimal(c_bin), d_dec);
+
 
     // Posunuti bitu o 6 pozic doprava
     printf("Bit shift to right: 6 bits of a_bin/a_dec:\n\nc_dec:     ");
-    bitShift(&a_bin, 6, &c_bin);
+
+    for(n = 0; n < 16; n++)
+        c_bin[n] =  n >= 6 ? a_bin[n - 6] : 0;
+
     d_dec = a_dec >> 6;
+
     printArray(c_bin);
     printf("     c_dec: %5d     d_dec: %5d\n\n", toDecimal(c_bin), d_dec);
 
+
     // Provedení logické negace
     printf("Bit-wise complement (NOT) to a_bin/a_dec:\n\nc_dec:     ");
-    logicalNot(&a_bin, &c_bin);
+
+    for(n = 0; n < 16; n++)
+        c_bin[n] = a_bin[n] == 0 ? 1 : 0;
+
     d_dec = ~a_dec;
+
     printArray(c_bin);
     printf("     c_dec: %5d     d_dec: %5d\n\n", toDecimal(c_bin), d_dec);
 
