@@ -51,8 +51,8 @@ int main(void) {
     // Provedeni logickeho soucinu
     printf("Bit-wise conjunction (AND):\n\nc_dec:     ");
 
-    for(n = 0; n < 16; n++)
-        c_bin[n] = a_bin[n] && b_bin[n] ? 1 : 0;
+    for(int i = 0; i < 16; i++)
+        c_bin[i] = a_bin[i] && b_bin[i] ? 1 : 0;
 
     d_dec = a_dec & b_dec;
 
@@ -63,8 +63,8 @@ int main(void) {
     // Provedeni logickeho souctu
     printf("Bit-wise disjunction (OR):\n\nc_dec:     ");
 
-    for(n = 0; n < 16; n++)
-        c_bin[n] = a_bin[n] || b_bin[n] ? 1 : 0;
+    for(int i = 0; i < 16; i++)
+        c_bin[i] = a_bin[i] || b_bin[i] ? 1 : 0;
 
     d_dec = a_dec | b_dec;
 
@@ -75,8 +75,8 @@ int main(void) {
     // Provedeni logickeho rozdilu
     printf("Bit-wise inequality (XOR):\n\nc_dec:     ");
 
-    for(n = 0; n < 16; n++)
-        c_bin[n] = a_bin[n] != b_bin[n] ? 1 : 0;
+    for(int i = 0; i < 16; i++)
+        c_bin[i] = a_bin[i] != b_bin[i] ? 1 : 0;
 
     d_dec = a_dec ^ b_dec;
 
@@ -87,8 +87,8 @@ int main(void) {
     // Posunuti bitu o 6 pozic doprava
     printf("Bit shift to right: 6 bits of a_bin/a_dec:\n\nc_dec:     ");
 
-    for(n = 0; n < 16; n++)
-        c_bin[n] =  n >= 6 ? a_bin[n - 6] : 0;
+    for(int i = 0; i < 16; i++)
+        c_bin[i] = i >= 6 ? a_bin[i - 6] : 0;
 
     d_dec = a_dec >> 6;
 
@@ -99,8 +99,8 @@ int main(void) {
     // Provedení logické negace
     printf("Bit-wise complement (NOT) to a_bin/a_dec:\n\nc_dec:     ");
 
-    for(n = 0; n < 16; n++)
-        c_bin[n] = a_bin[n] == 0 ? 1 : 0;
+    for(int i = 0; i < 16; i++)
+        c_bin[i] = a_bin[i] == 0 ? 1 : 0;
 
     d_dec = ~a_dec;
 
